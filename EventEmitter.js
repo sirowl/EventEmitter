@@ -1,11 +1,12 @@
 /*!
- * EventEmitter v5.2.9 - git.io/ee
+ * EventEmitter v5.2.9f - git.io/ee
  * Unlicense - http://unlicense.org/
  * Oliver Caldwell - https://oli.me.uk/
  * @preserve
+ * @FORK By Patrik Wallin, https://github.com/sirowl/
  */
 
-;(function (exports) {
+(function (exports){
     'use strict';
 
     /**
@@ -35,9 +36,8 @@
                 return i;
             }
         }
-
         return -1;
-    }
+    };
 
     /**
      * Alias a method while keeping the context correct, to allow for overwriting of target method.
@@ -50,7 +50,7 @@
         return function aliasClosure() {
             return this[name].apply(this, arguments);
         };
-    }
+    };
 
     /**
      * Returns the listener array for the specified event.
@@ -126,7 +126,7 @@
         } else {
             return false
         }
-    }
+    };
 
     /**
      * Adds a listener function to the specified event.
@@ -472,15 +472,7 @@
     };
 
     // Expose the class either via AMD, CommonJS or the global object
-    if (typeof define === 'function' && define.amd) {
-        define(function () {
-            return EventEmitter;
-        });
-    }
-    else if (typeof module === 'object' && module.exports){
-        module.exports = EventEmitter;
-    }
-    else {
+    if (exports) {
         exports.EventEmitter = EventEmitter;
     }
-}(typeof window !== 'undefined' ? window : this || {}));
+})(typeof window !== 'undefined' ? window : this || {});
